@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using Tools;
 
 namespace Aligners
 {
@@ -8,7 +10,7 @@ namespace Aligners
     {
         public static void Start(int mode)
         {
-            Console.WriteLine("Please enter amount of numbers: ");
+            Console.Write("Please enter amount of numbers: ");
             bool isNumeric = int.TryParse(Console.ReadLine(), out int lenght);
             if (!isNumeric)
             {
@@ -37,6 +39,7 @@ namespace Aligners
     {
         public static void ArraySorter(int[] Input)
         {
+            bool debug = true;
             int[] Output = new int[Input.Length];
             int CurrentLargest = 0;
             int CurrentLargestPos = 0;
@@ -49,46 +52,59 @@ namespace Aligners
             {
                 for (int j = 0; j < Input.Length; j++)
                 {
-
-                    foreach (int pos in UsedPos)
+                    if (debug) Debuggers.Logger("0");
+                    for (int k = 0; k < i + 1; k++)
                     {
-                        if (pos == j && i != 0)
+                        if (UsedPos[k] == j)
                         {
                             skip = true;
                         }
                     }
+                    
+                    if (debug) Debuggers.Logger("1", Convert.ToString(skip), Convert.ToString(j), Convert.ToString(Input[j]));
                     if (!skip)
                     {
                         if (CurrentLargest < Input[j])
                         {
+                            if (debug) Debuggers.Logger("2", Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos));
                             CurrentLargest = Input[j];
                             CurrentLargestPos = j;
+                            if (debug) Debuggers.Logger("3", Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos)); 
                         }
                         else if (CurrentLargest == Input[j])
                         {
                             duplicate[DuplicatePos, 0] = j;
                             duplicate[DuplicatePos, 1] = Input[j];
                             DuplicatePos++;
+                            if (debug) Debuggers.Logger("4", Convert.ToString(duplicate[DuplicatePos-1, 1]), Convert.ToString(duplicate[DuplicatePos-1, 0]), Convert.ToString(DuplicatePos));
                         }
                     }
                     else
                     {
                         skip = false;
                     }
+                    if (debug) Debuggers.Logger("5", Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos), Convert.ToString(DuplicatePos));
                 }
+                if (debug) Debuggers.Logger("6", Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos), Convert.ToString(DuplicatePos), Convert.ToString(i));
                 rpt = DuplicatePos;
                 Output[i] = CurrentLargest;
                 UsedPos[i] = CurrentLargestPos;
                 for (int j = 0; j < rpt; j++)
                 {
+                    if (debug) Debuggers.Logger("7", Convert.ToString(duplicate[j, 1]), Convert.ToString(duplicate[j, 0]), Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos));
                     if (duplicate[j, 1] == CurrentLargest)
                     {
+                        if (debug) Debuggers.Logger("8", Convert.ToString(duplicate[j, 1]), Convert.ToString(CurrentLargestPos), Convert.ToString(duplicate[j, 0]));
                         i++;
                         Output[i] = duplicate[j, 1];
                         UsedPos[i] = duplicate[j, 0];
                     }
+                    else
+                    {
+                        if (debug) Debuggers.Logger("9");
+                    }
                 }
-
+                if (debug) Debuggers.Logger("line");
                 for (int k = 0; k < rpt; k++)
                 {
                     duplicate[k, 0] = 0;
@@ -98,8 +114,9 @@ namespace Aligners
 
                 CurrentLargest = 0;
                 CurrentLargestPos = 0;
+                Console.Write("\rCompleted {0}%", (Input.Length/100)*i);
             }
-
+            Console.WriteLine();
             foreach (int num in Output)
             {
                 Console.Write(num + ", ");
