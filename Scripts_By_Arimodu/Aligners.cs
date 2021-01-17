@@ -57,6 +57,7 @@ namespace Aligners
             int[,] duplicate = new int[Input.Length, 2];
             int DuplicatePos = 0;
             int rpt;
+            int percentComplete = 0;
 
 
             for (int i = 0; i < Input.Length; i++)
@@ -66,8 +67,7 @@ namespace Aligners
                     if (debug) Debuggers.Logger("0");
 
                     //Checking if the current position is already used
-                    //Note to self, the bug is here, the first position is always skipped for some reason...
-                    for (int k = 0; k < i + 1; k++)
+                    for (int k = 0; k < i; k++)
                     {
                         if (UsedPos[k] == j)
                         {
@@ -132,7 +132,8 @@ namespace Aligners
 
                 CurrentLargest = 0;
                 CurrentLargestPos = 0;
-                Console.Write("\rCompleted {0}%", (Input.Length/100)*i);
+                percentComplete = (int)Math.Round((double)(100 * i) / Input.Length);
+                Console.Write("\rCompleted {0}%", percentComplete);
             }
 
             Console.WriteLine("\n");
