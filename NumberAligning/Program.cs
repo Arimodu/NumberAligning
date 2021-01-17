@@ -1,33 +1,52 @@
 ﻿using System;
 
-namespace NumberAligning
+namespace Scripts_By_Arimodu
 {
     class Program
     {
         static void Main(string[] args)
         {
+            //Check if running in debug
+            bool debug = false;
+            foreach (var item in args)
+            {
+                if (item == "debug" || item == "-debug")
+                {
+                    Console.WriteLine("Application running in debug.");
+                    Console.WriteLine("Log file generated and saved at: " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+                    Tools.Debuggers.Logger("\n \n \nScripts by Arimodu. \nRunning in debug. \nSystem time and date: " + DateTime.Now);
+                    debug = true;
+                }
+            }
+            
+            //Display welcome message
             WelcomeMessage();
+
+            //Get mode from user
             int mode;
             do
             {
                 mode = ModeChoice();
             } while (mode == 0);
 
-            Launcher(mode);
+            //Start the launcher
+            Launcher(mode, debug);
         }
 
-        private static void Launcher(int mode)
+        private static void Launcher(int mode, bool debug)
         {
             switch (mode)
             {
                 case 1:
-                    Aligners.CommonStartRandom.Start(mode);
+                    Console.Clear();
+                    Aligners.CommonStartRandom.Start(mode, debug);
                     break;
                 case 2:
-                    Aligners.CommonStartRandom.Start(mode);
+                    Console.Clear();
+                    Aligners.CommonStartRandom.Start(mode, debug);
                     break;
                 default:
-                    Console.WriteLine("A fatal error accured while selecting mode, launcher cannot start. Please try again.");
+                    Console.WriteLine("A fatal error occured while selecting mode, launcher cannot start. Please try again.");
                     break;
             }
         }
@@ -71,7 +90,7 @@ namespace NumberAligning
         private static void WelcomeMessage()
         {
             Console.WriteLine("----------------------------------------------------------------------------------");
-            Console.WriteLine("Number Aligner 1.8");
+            Console.WriteLine("Scripts 1.8");
             Console.WriteLine("Made by Arimodu");
             Console.WriteLine("----------------------------------------------------------------------------------");
         }

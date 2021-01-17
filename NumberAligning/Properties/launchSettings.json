@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Scripts_By_Arimodu": {
+      "commandName": "Project",
+      "commandLineArgs": "-debug"
+    },
+    "Scripts_By_Arimodu_NoDebug": {
+      "commandName": "Project"
+    }
+  }
+}

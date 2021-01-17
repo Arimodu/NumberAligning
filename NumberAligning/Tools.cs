@@ -23,7 +23,8 @@ namespace Tools
         public static void Logger(string message, string parm1 = null, string parm2 = null, string parm3 = null, string parm4 = null)
         {
             //if (debug) Debuggers.Logger(x, Convert.ToString(x), Convert.ToString(x), Convert.ToString(x), Convert.ToString(x));
-            StreamWriter FileWriter = File.AppendText(@"C:\Users\Arimodu\Desktop\log.txt");
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            StreamWriter FileWriter = File.AppendText(path + @"\log.txt");
             bool isNumeric = int.TryParse(message, out int msg);
             if (!isNumeric && message == "line")
             {
@@ -33,6 +34,7 @@ namespace Tools
             else if (!isNumeric && message != "line")
             {
                 FileWriter.WriteLine(message);
+                msg = -1;
             }
             switch (msg)
             {
