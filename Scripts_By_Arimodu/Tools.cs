@@ -20,7 +20,7 @@ namespace Tools
     }
     class Debuggers
     {
-        public static void Logger(string message, string parm1 = null, string parm2 = null, string parm3 = null, string parm4 = null)
+        public static void Logger(string message, int appmode, string parm1 = null, string parm2 = null, string parm3 = null, string parm4 = null)
         {
             //if (debug) Debuggers.Logger(x, Convert.ToString(x), Convert.ToString(x), Convert.ToString(x), Convert.ToString(x));
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
