@@ -14,7 +14,7 @@ namespace Scripts_By_Arimodu
                 {
                     Console.WriteLine("Application running in debug.");
                     Console.WriteLine("Log file generated and saved at: " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
-                    Tools.Debuggers.Logger("\n \n \nScripts by Arimodu. \nRunning in debug. \nSystem time and date: " + DateTime.Now);
+                    Tools.Debuggers.Logger("\n \n \nScripts by Arimodu. \nRunning in debug. \nSystem time and date: " + DateTime.Now, 0);
                     debug = true;
                 }
             }
@@ -45,6 +45,9 @@ namespace Scripts_By_Arimodu
                     Console.Clear();
                     Aligners.CommonStartRandom.Start(mode, debug);
                     break;
+                case 3:
+                    Console.Clear();
+                    break;
                 default:
                     Console.WriteLine("A fatal error occured while selecting mode, launcher cannot start. Please try again.");
                     break;
@@ -57,6 +60,7 @@ namespace Scripts_By_Arimodu
             Console.WriteLine("Choose mode:");
             Console.WriteLine("1: Align random numbers from highest to lowest");
             Console.WriteLine("2: Align random numbers from lowest to highest");
+            Console.WriteLine("3: Hello world, and first scripts");
             char userChoice = Console.ReadKey(true).KeyChar;
             switch (userChoice)
             {
@@ -66,6 +70,9 @@ namespace Scripts_By_Arimodu
                 case '2':
                     ModeChosenMessage(userChoice);
                     return 2;
+                case '3':
+                    ModeChosenMessage(userChoice);
+                    return 3;
                 default:
                     Console.Clear();
                     Console.WriteLine("Incorrect input");
