@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Scripts_By_Arimodu
 {
@@ -14,7 +15,7 @@ namespace Scripts_By_Arimodu
                 {
                     Console.WriteLine("Application running in debug.");
                     Console.WriteLine("Log file generated and saved at: " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
-                    Tools.Debuggers.Logger("\n \n \nScripts by Arimodu. \nRunning in debug. \nSystem time and date: " + DateTime.Now, 0);
+                    Tools.Debuggers.Logger("\n \n \nScripts by Arimodu. \nRunning in debug. \nSystem time and date: " + DateTime.Now, 0, Scripts_By_Arimodu.Globals.FileWriter);
                     debug = true;
                 }
             }
@@ -101,5 +102,10 @@ namespace Scripts_By_Arimodu
             Console.WriteLine("Made by Arimodu");
             Console.WriteLine("----------------------------------------------------------------------------------");
         }
+    }
+    static class Globals
+    {
+        public static string LogPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        public static StreamWriter FileWriter = new StreamWriter(LogPath + @"\log.txt");
     }
 }

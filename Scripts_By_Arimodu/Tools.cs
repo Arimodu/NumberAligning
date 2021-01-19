@@ -20,11 +20,9 @@ namespace Tools
     }
     class Debuggers
     {
-        public static void Logger(string message, int appmode, string parm1 = null, string parm2 = null, string parm3 = null, string parm4 = null)
+        public static void Logger(string message, int appmode, StreamWriter FileWriter, string parm1 = null, string parm2 = null, string parm3 = null, string parm4 = null)
         {
             //if (debug) Debuggers.Logger(x, Convert.ToString(x), Convert.ToString(x), Convert.ToString(x), Convert.ToString(x));
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            StreamWriter FileWriter = File.AppendText(path + @"\log.txt");
             bool isNumeric = int.TryParse(message, out int msg);
             if (!isNumeric && message == "line")
             {

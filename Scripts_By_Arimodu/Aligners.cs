@@ -102,53 +102,53 @@ namespace Aligners
             {
                 for (int j = 0; j < Input.Length; j++)
                 {
-                    if (debug) Debuggers.Logger("0", mode);
+                    if (debug) Debuggers.Logger("0", mode, Scripts_By_Arimodu.Globals.FileWriter);
 
                     //Checking if the current position is already used
                     for (int k = 0; k < i; k++) if (UsedPos[k] == j) skip = true;
                     
-                    if (debug) Debuggers.Logger("1", mode, Convert.ToString(skip), Convert.ToString(j), Convert.ToString(Input[j]));
+                    if (debug) Debuggers.Logger("1", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(skip), Convert.ToString(j), Convert.ToString(Input[j]));
 
                     //Skip reading if already used
                     if (!skip)
                     {
                         if (CurrentLargest < Input[j])
                         {
-                            if (debug) Debuggers.Logger("2", mode, Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos));
+                            if (debug) Debuggers.Logger("2", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos));
                             CurrentLargest = Input[j];
                             CurrentLargestPos = j;
-                            if (debug) Debuggers.Logger("3", mode, Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos));
+                            if (debug) Debuggers.Logger("3", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos));
                         }
                         else if (CurrentLargest == Input[j])
                         {
                             duplicate[DuplicatePos, 0] = j;
                             duplicate[DuplicatePos, 1] = Input[j];
                             DuplicatePos++;
-                            if (debug) Debuggers.Logger("4", mode, Convert.ToString(duplicate[DuplicatePos - 1, 1]), Convert.ToString(duplicate[DuplicatePos - 1, 0]), Convert.ToString(DuplicatePos));
+                            if (debug) Debuggers.Logger("4", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(duplicate[DuplicatePos - 1, 1]), Convert.ToString(duplicate[DuplicatePos - 1, 0]), Convert.ToString(DuplicatePos));
                         }
                     }
                     else skip = false;
-                    if (debug) Debuggers.Logger("5", mode, Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos), Convert.ToString(DuplicatePos));
+                    if (debug) Debuggers.Logger("5", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos), Convert.ToString(DuplicatePos));
                 }
 
                 //Move values into output
-                if (debug) Debuggers.Logger("6", mode, Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos), Convert.ToString(DuplicatePos), Convert.ToString(i));
+                if (debug) Debuggers.Logger("6", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos), Convert.ToString(DuplicatePos), Convert.ToString(i));
                 rpt = DuplicatePos;
                 Output[i] = CurrentLargest;
                 UsedPos[i] = CurrentLargestPos;
                 for (int j = 0; j < rpt; j++)
                 {
-                    if (debug) Debuggers.Logger("7", mode, Convert.ToString(duplicate[j, 1]), Convert.ToString(duplicate[j, 0]), Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos));
+                    if (debug) Debuggers.Logger("7", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(duplicate[j, 1]), Convert.ToString(duplicate[j, 0]), Convert.ToString(CurrentLargest), Convert.ToString(CurrentLargestPos));
                     if (duplicate[j, 1] == CurrentLargest)
                     {
-                        if (debug) Debuggers.Logger("8", mode, Convert.ToString(duplicate[j, 1]), Convert.ToString(CurrentLargestPos), Convert.ToString(duplicate[j, 0]));
+                        if (debug) Debuggers.Logger("8", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(duplicate[j, 1]), Convert.ToString(CurrentLargestPos), Convert.ToString(duplicate[j, 0]));
                         i++;
                         Output[i] = duplicate[j, 1];
                         UsedPos[i] = duplicate[j, 0];
                     }
-                    else if (debug) Debuggers.Logger("9", mode);
+                    else if (debug) Debuggers.Logger("9", mode, Scripts_By_Arimodu.Globals.FileWriter);
                 }
-                if (debug) Debuggers.Logger("line", mode);
+                if (debug) Debuggers.Logger("line", mode, Scripts_By_Arimodu.Globals.FileWriter);
                 for (int k = 0; k < rpt; k++)
                 {
                     duplicate[k, 0] = 0;
@@ -200,55 +200,55 @@ namespace Aligners
             {
                 for (int j = 0; j < Input.Length; j++)
                 {
-                    if (debug) Debuggers.Logger("0", mode);
+                    if (debug) Debuggers.Logger("0", mode, Scripts_By_Arimodu.Globals.FileWriter);
 
                     //Checking if the current position is already used
                     for (int k = 0; k < i; k++) if (UsedPos[k] == j) skip = true;
 
 
-                    if (debug) Debuggers.Logger("1", mode, Convert.ToString(skip), Convert.ToString(j), Convert.ToString(Input[j]));
+                    if (debug) Debuggers.Logger("1", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(skip), Convert.ToString(j), Convert.ToString(Input[j]));
 
                     //Skip reading if already used
                     if (!skip)
                     {
                         if (CurrentSmallest > Input[j])
                         {
-                            if (debug) Debuggers.Logger("2", mode, Convert.ToString(CurrentSmallest), Convert.ToString(CurrentSmallestPos));
+                            if (debug) Debuggers.Logger("2", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(CurrentSmallest), Convert.ToString(CurrentSmallestPos));
                             CurrentSmallest = Input[j];
                             CurrentSmallestPos = j;
-                            if (debug) Debuggers.Logger("3", mode, Convert.ToString(CurrentSmallest), Convert.ToString(CurrentSmallestPos));
+                            if (debug) Debuggers.Logger("3", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(CurrentSmallest), Convert.ToString(CurrentSmallestPos));
                         }
                         else if (CurrentSmallest == Input[j])
                         {
                             duplicate[DuplicatePos, 0] = j;
                             duplicate[DuplicatePos, 1] = Input[j];
                             DuplicatePos++;
-                            if (debug) Debuggers.Logger("4", mode, Convert.ToString(duplicate[DuplicatePos - 1, 1]), Convert.ToString(duplicate[DuplicatePos - 1, 0]), Convert.ToString(DuplicatePos));
+                            if (debug) Debuggers.Logger("4", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(duplicate[DuplicatePos - 1, 1]), Convert.ToString(duplicate[DuplicatePos - 1, 0]), Convert.ToString(DuplicatePos));
                         }
                     }
                     else skip = false;
-                    if (debug) Debuggers.Logger("5", mode, Convert.ToString(CurrentSmallest), Convert.ToString(CurrentSmallestPos), Convert.ToString(DuplicatePos));
+                    if (debug) Debuggers.Logger("5", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(CurrentSmallest), Convert.ToString(CurrentSmallestPos), Convert.ToString(DuplicatePos));
                 }
 
                 //Move values into output
-                if (debug) Debuggers.Logger("6", mode, Convert.ToString(CurrentSmallest), Convert.ToString(CurrentSmallestPos), Convert.ToString(DuplicatePos), Convert.ToString(i));
+                if (debug) Debuggers.Logger("6", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(CurrentSmallest), Convert.ToString(CurrentSmallestPos), Convert.ToString(DuplicatePos), Convert.ToString(i));
                 rpt = DuplicatePos;
                 Output[i] = CurrentSmallest;
                 UsedPos[i] = CurrentSmallestPos;
                 for (int j = 0; j < rpt; j++)
                 {
-                    if (debug) Debuggers.Logger("7", mode, Convert.ToString(duplicate[j, 1]), Convert.ToString(duplicate[j, 0]), Convert.ToString(CurrentSmallest), Convert.ToString(CurrentSmallestPos));
+                    if (debug) Debuggers.Logger("7", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(duplicate[j, 1]), Convert.ToString(duplicate[j, 0]), Convert.ToString(CurrentSmallest), Convert.ToString(CurrentSmallestPos));
                     if (duplicate[j, 1] == CurrentSmallest)
                     {
-                        if (debug) Debuggers.Logger("8", mode, Convert.ToString(duplicate[j, 1]), Convert.ToString(CurrentSmallestPos), Convert.ToString(duplicate[j, 0]));
+                        if (debug) Debuggers.Logger("8", mode, Scripts_By_Arimodu.Globals.FileWriter, Convert.ToString(duplicate[j, 1]), Convert.ToString(CurrentSmallestPos), Convert.ToString(duplicate[j, 0]));
                         i++;
                         Output[i] = duplicate[j, 1];
                         UsedPos[i] = duplicate[j, 0];
                     }
-                    else if (debug) Debuggers.Logger("9", mode);
+                    else if (debug) Debuggers.Logger("9", mode, Scripts_By_Arimodu.Globals.FileWriter);
 
                 }
-                if (debug) Debuggers.Logger("line", mode);
+                if (debug) Debuggers.Logger("line", mode, Scripts_By_Arimodu.Globals.FileWriter);
                 for (int k = 0; k < rpt; k++)
                 {
                     duplicate[k, 0] = 0;
