@@ -9,6 +9,8 @@ namespace Scripts_By_Arimodu
         public static void HelloWorldMain()
         {
             Console.WriteLine("Hello world");
+            Console.WriteLine();
+            Console.WriteLine("Hello world");
         }
     }
 }

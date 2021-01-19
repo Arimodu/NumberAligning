@@ -48,6 +48,7 @@ namespace Scripts_By_Arimodu
                     break;
                 case 3:
                     Console.Clear();
+                    HelloWorld.HelloWorldMain();
                     break;
                 default:
                     Console.WriteLine("A fatal error occured while selecting mode, launcher cannot start. Please try again.");
