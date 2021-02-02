@@ -50,6 +50,10 @@ namespace Scripts_By_Arimodu
                     Console.Clear();
                     HelloWorld.HelloWorldMain();
                     break;
+                case 4:
+                    Console.Clear();
+                    PRG212021.MainFc();
+                    break;
                 default:
                     Console.WriteLine("A fatal error occured while selecting mode, launcher cannot start. Please try again.");
                     break;
@@ -63,6 +67,7 @@ namespace Scripts_By_Arimodu
             Console.WriteLine("1: Align random numbers from highest to lowest");
             Console.WriteLine("2: Align random numbers from lowest to highest");
             Console.WriteLine("3: Hello world, and first scripts");
+            Console.WriteLine("4: PRG 2.1.2021");
             char userChoice = Console.ReadKey(true).KeyChar;
             switch (userChoice)
             {
@@ -75,6 +80,9 @@ namespace Scripts_By_Arimodu
                 case '3':
                     ModeChosenMessage(userChoice);
                     return 3;
+                case '4':
+                    ModeChosenMessage(userChoice);
+                    return 4;
                 default:
                     Console.Clear();
                     Console.WriteLine("Incorrect input");
