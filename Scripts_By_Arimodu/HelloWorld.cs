@@ -14,6 +14,9 @@ namespace Scripts_By_Arimodu
             double decimals = 2.01;
             char keystroke;
 
+            Console.WriteLine(numbers);
+            Console.WriteLine(decimals);
+
             sentence = Console.ReadLine();
             Console.WriteLine(sentence);
             keystroke = Console.ReadKey().KeyChar;
@@ -27,6 +30,26 @@ namespace Scripts_By_Arimodu
 
             Console.WriteLine(number1 + number2);
 
+
+
+
+
+
+
+            Console.WriteLine("zadej cislo 1:"); //napisu na konzoli to co je v uvozovkach
+            string vstup = Console.ReadLine(); //prectu z konzole co tam nekdo napsal a ulozim si to do promene typu string jmenem vstup
+            int num = Int32.Parse(vstup); //prevedu promenou typu string na promenou typu int ktera se jmenuje num (jako "number")
+            Console.WriteLine(num); //vypisu promenou num
+
+
+
+
+
+
+
+            Console.WriteLine("zadej cislo 2:"); //napisu na konzoli to co je v uvozovkach
+            int num2 = Int32.Parse(Console.ReadLine()); //prectu z konzole co tam nekdo napsal a prevedu to ze stringu na int jmenem num2
+            Console.WriteLine(num2); //vypisu promenou num2
 
 
         }
