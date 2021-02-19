@@ -32,6 +32,8 @@ namespace Scripts_By_Arimodu
 
             //Start the launcher
             Launcher(mode, debug);
+
+            Console.ReadLine();
         }
 
         private static void Launcher(int mode, bool debug)
@@ -54,6 +56,10 @@ namespace Scripts_By_Arimodu
                     Console.Clear();
                     PRG212021.MainFc();
                     break;
+                case 5:
+                    Console.Clear();
+                    ChooseLargestFrom3.CLF3();
+                    break;
                 default:
                     Console.WriteLine("A fatal error occured while selecting mode, launcher cannot start. Please try again.");
                     break;
@@ -68,7 +74,8 @@ namespace Scripts_By_Arimodu
             Console.WriteLine("2: Align random numbers from lowest to highest");
             Console.WriteLine("3: Hello world, and first scripts");
             Console.WriteLine("4: PRG 2.1.2021");
-            char userChoice = Console.ReadKey(true).KeyChar;
+            Console.WriteLine("5: Choose largest from 3");
+            char userChoice = Convert.ToChar(Console.ReadLine());
             switch (userChoice)
             {
                 case '1':
@@ -83,6 +90,9 @@ namespace Scripts_By_Arimodu
                 case '4':
                     ModeChosenMessage(userChoice);
                     return 4;
+                case '5':
+                    ModeChosenMessage(userChoice);
+                    return 5;
                 default:
                     Console.Clear();
                     Console.WriteLine("Incorrect input");
