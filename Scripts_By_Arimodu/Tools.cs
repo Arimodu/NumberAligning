@@ -77,7 +77,6 @@ namespace Tools
                     FileWriter.WriteLine("Error");
                     break;
             }
-            FileWriter.Close();
         }
     }
 }
