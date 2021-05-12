@@ -159,7 +159,7 @@ namespace Aligners
                 CurrentLargest = 0;
                 CurrentLargestPos = 0;
                 percentComplete = (int)Math.Round((double)(100 * i) / Input.Length);
-                Console.Write("\rCompleted {0}%", percentComplete);
+                Console.Write($"\rCompleted {percentComplete}%");
             }
 
             Console.WriteLine("\n");
